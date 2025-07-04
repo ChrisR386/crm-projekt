@@ -1,4 +1,4 @@
-kunden = {}  # Kunden werden hier als Dictionary gespeichert
+kunden = {}  # Ein Dictionary zum Speichern der Kunden. Schlüssel: Kundenname, Wert: Dictionary mit Details
 
 def kunden_anzeigen():
     if not kunden:
@@ -28,6 +28,28 @@ def kunde_hinzufuegen():
     }
     print(f"Kunde '{name}' wurde hinzugefügt.")
 
-# Nur zum Testen (danach wieder auskommentieren!)
-kunde_hinzufuegen()
-kunden_anzeigen()
+def zeige_menue():
+    print("\n--- CRM Menü ---")
+    print("1. Kunde hinzufügen")
+    print("2. Kunden anzeigen")
+    print("3. Beenden")
+    print("----------------")
+
+def main():
+    while True:
+        zeige_menue()
+        wahl = input("Ihre Wahl: ")
+
+        if wahl == '1':
+            kunde_hinzufuegen()
+        elif wahl == '2':
+            kunden_anzeigen()
+        elif wahl == '3':
+            print("Programm wird beendet. Auf Wiedersehen!")
+            break
+        else:
+            print("Ungültige Eingabe. Bitte versuchen Sie es erneut.")
+
+# Startet das Hauptprogramm, wenn die Datei direkt ausgeführt wird
+if __name__ == "__main__":
+    main()
