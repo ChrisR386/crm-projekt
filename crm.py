@@ -1,10 +1,5 @@
-# Dein Kundenmanagement-System
+kunden = {}  # Kunden werden hier als Dictionary gespeichert
 
-# Dictionary zum Speichern der Kunden
-# Schlüssel = Kundenname, Wert = weiteres Dictionary mit Details wie E-Mail und Telefon
-kunden = {}
-
-# Funktion zum Anzeigen aller Kunden
 def kunden_anzeigen():
     if not kunden:
         print("Der Katalog ist leer.")
@@ -17,5 +12,22 @@ def kunden_anzeigen():
         print(f"  Telefon: {details.get('telefon', 'N/A')}")
         print("-------------------------")
 
-# Test (kannst du später entfernen oder einkommentieren)
+def kunde_hinzufuegen():
+    print("\n--- Kunden hinzufügen ---")
+    name = input("Name des Kunden: ")
+    email = input("E-Mail des Kunden: ")
+    telefon = input("Telefonnummer des Kunden: ")
+
+    if name in kunden:
+        print(f"Fehler: Kunde '{name}' existiert bereits im Katalog.")
+        return
+
+    kunden[name] = {
+        "email": email,
+        "telefon": telefon
+    }
+    print(f"Kunde '{name}' wurde hinzugefügt.")
+
+# Nur zum Testen (danach wieder auskommentieren!)
+kunde_hinzufuegen()
 kunden_anzeigen()
