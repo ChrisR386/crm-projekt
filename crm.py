@@ -48,12 +48,26 @@ def kunde_suchen():
         print(f"  Telefon: {details.get('telefon', 'N/A')}")
         print("-------------------------")
 
+def kunde_loeschen():
+    print("\n--- Kunden löschen ---")
+    name = input("Name des Kunden, der gelöscht werden soll: ")
+    if name in kunden:
+        bestaetigung = input(f"Bist du sicher, dass du '{name}' löschen möchtest? (j/n): ").lower()
+        if bestaetigung == 'j':
+            del kunden[name]
+            print(f"Kunde '{name}' wurde gelöscht.")
+        else:
+            print("Löschvorgang abgebrochen.")
+    else:
+        print(f"Kunde '{name}' wurde nicht gefunden.")
+
 def zeige_menue():
     print("\n--- CRM Menü ---")
     print("1. Kunde hinzufügen")
     print("2. Kunden anzeigen")
     print("3. Kunde suchen")
-    print("4. Beenden")
+    print("4. Kunde löschen")
+    print("5. Beenden")
     print("----------------")
 
 def main():
@@ -68,6 +82,8 @@ def main():
         elif wahl == '3':
             kunde_suchen()
         elif wahl == '4':
+            kunde_loeschen()
+        elif wahl == '5':
             print("Programm wird beendet. Auf Wiedersehen!")
             break
         else:
